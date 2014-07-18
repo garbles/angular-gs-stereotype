@@ -1,0 +1,40 @@
+{
+  "name": "angular-gs-stereotype",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A library for wrapping data in AngularJS",
+  "main": "./build/angular-gs-stereotype.js",
+  "minified": "./build/angular-gs-stereotype.min.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/garbles/angular-gs-stereotype.git"
+  },
+  "keywords": ["stereotype","model","decorator","angular"],
+  "author": "Gabriel Scholz <info@garbl.es>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/garbles/angular-gs-stereotype/issues"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "karma": "~0.12.14",
+    "karma-phantomjs-launcher": "~0.1.0",
+    "karma-jasmine": "~0.1.5",
+    "jshint-stylish": "~0.1.3",
+    "yargs": "*",
+    "semver": "*",
+    "gulp": "3.8.6",
+    "gulp-concat": "*",
+    "gulp-ng-annotate": "*",
+    "gulp-jshint": "*",
+    "gulp-uglify": "*",
+    "gulp-rename": "*",
+    "gulp-shell": "*",
+    "gulp-bump": "*",
+    "gulp-karma": "*",
+    "gulp-rimraf": "*"
+  }
+}
