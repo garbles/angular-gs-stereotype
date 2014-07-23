@@ -1,6 +1,6 @@
 {
   "name": "angular-gs-stereotype",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "A library for wrapping data in AngularJS",
   "main": "./build/angular-gs-stereotype.js",

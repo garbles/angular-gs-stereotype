@@ -2,22 +2,22 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
   module.exports = 'gs.stereotype';
 }
 
-(function(window, angular, undefined) {'use strict';
+(function (window, angular, undefined) {'use strict';
 
 angular.module('gs.stereotype', ['gs.invert-case'])
-.factory('Stereotype', ['$injector', 'invertCase',
-function ($injector, invertCase) {
+.factory('Stereotype', ['$filter', 'invertCase',
+function ($filter, invertCase) {
   var camelify = _.partialRight(invertCase, 'camel'),
-    injectOnArray = _.memoize(_.partialRight(_.map, $injector.get)),
+    injectOnArray = _.memoize(_.partialRight(_.map, $filter)),
     reverse = _.memoize(_.partialRight(_.result, 'reverse')),
-    injectConcerns = _.memoize(_.compose(injectOnArray, reverse, _.clone));
+    injectFilters = _.memoize(_.compose(injectOnArray, reverse, _.clone));
 
   return function () {
-    var model, schema, keys, concerns;
+    var model, schema, keys, filters;
 
-    function mixinConcerns (object) {
-      var injectedConcerns = injectConcerns(concerns);
-      return _.compose.apply(null, injectedConcerns)(object);
+    function mixinFilters (object) {
+      var injectedFilters = injectFilters(filters);
+      return _.compose.apply(null, injectedFilters)(object);
     }
 
     function pickKeys (object) {
@@ -35,11 +35,11 @@ function ($injector, invertCase) {
       });
     }
 
-    concerns = _.flatten(Array.prototype.slice.call(arguments));
+    filters = _.flatten(Array.prototype.slice.call(arguments));
 
     model = {
       extend: function (arr) {
-        concerns = concerns.concat(arr);
+        filters = filters.concat(arr);
         return model;
       },
       schema: function (object) {
@@ -49,10 +49,10 @@ function ($injector, invertCase) {
         return model;
       },
       wrap: function (fn) {
-        var mixin = _.compose(fn, addUtilityFns, mixinConcerns, setDefaults, pickKeys, camelify);
+        var mixin = _.compose(fn, addUtilityFns, mixinFilters, setDefaults, pickKeys, camelify);
 
         return {
-          concerns: concerns,
+          filters: filters,
           mixin: mixin,
           schema: schema
         };
