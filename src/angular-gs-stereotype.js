@@ -2,7 +2,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
   module.exports = 'gs.stereotype';
 }
 
-(function(window, angular, undefined) {'use strict';
+(function (window, angular, undefined) {'use strict';
 
 angular.module('gs.stereotype', ['gs.invert-case'])
 .factory('Stereotype', ['$filter', 'invertCase',
