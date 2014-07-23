@@ -2,14 +2,14 @@ describe('angular-gs-stereotype', function () {
   var Stereotype;
 
   angular.module('mixinModule', [])
-  .factory('giveMeSomeC', function () {
+  .filter('giveMeSomeC', function () {
     return function (object) {
       object.c = 3;
 
       return object;
     };
   })
-  .factory('giveMeSomeFn', function () {
+  .filter('giveMeSomeFn', function () {
     return function (object) {
       object.someFunction = function () {
         return 'HELLO';
@@ -54,5 +54,6 @@ describe('angular-gs-stereotype', function () {
 
     expect(mixedIn.c).toEqual(3);
     expect(mixedIn.someFunction()).toEqual('HELLO');
+    expect(model.filters).toEqual(['giveMeSomeC', 'giveMeSomeFn']);
   });
 });
